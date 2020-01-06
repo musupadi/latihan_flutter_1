@@ -27,8 +27,8 @@ class _HomePageState extends State<HomePage> {
               onPressed: () {},
             ),
           ),
-          body: SafeArea(
-            child: Column(
+          body: ListView(
+              physics: BouncingScrollPhysics(),
               children: <Widget>[
                 Container(
                   decoration: BoxDecoration(
@@ -40,14 +40,14 @@ class _HomePageState extends State<HomePage> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
                       Text(
-                        'Temukan Apa yang kamu cari',
+                        'Game PS 4 Terbaik Dunia',
                         style: TextStyle(color: Colors.black87, fontSize: 25),
                       ),
                       SizedBox(
                         height: 3,
                       ),
                       Text(
-                        'Inspirasi',
+                        'Game PS 4',
                         style: TextStyle(color: Colors.black, fontSize: 40),
                       ),
                       SizedBox(
@@ -65,7 +65,7 @@ class _HomePageState extends State<HomePage> {
                                 Icons.search,
                                 color: Colors.black87,
                               ),
-                              hintText: "Mencari Apa yang kau inginkan",
+                              hintText: "Cari Game PS 4",
                               hintStyle:
                                   TextStyle(color: Colors.grey, fontSize: 15)),
                         ),
@@ -97,11 +97,11 @@ class _HomePageState extends State<HomePage> {
                         child: ListView(
                           scrollDirection: Axis.horizontal,
                           children: <Widget>[
-                            promoCard('assets/img/wallpaper1.jpg'),
-                            promoCard('assets/img/wallpaper2.jpg'),
-                            promoCard('assets/img/wallpaper3.jpg'),
-                            promoCard('assets/img/wallpaper4.jpg'),
-                            promoCard('assets/img/wallpaper5.jpg'),
+                            promoCard('assets/img/wallpaper1.jpg','Monster Hunter World'),
+                            promoCard('assets/img/wallpaper2.jpg','Final Fantasy'),
+                            promoCard('assets/img/wallpaper3.jpg','Vindictus'),
+                            promoCard('assets/img/wallpaper4.jpg','Horizon Zero Dawn'),
+                            promoCard('assets/img/wallpaper5.jpg','Monster Hunter World'),
                           ],
                         ),
                       ),
@@ -109,7 +109,7 @@ class _HomePageState extends State<HomePage> {
                         height: 20,
                       ),
                       Container(
-                        height: 150,
+                        height: 200,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(20),
                           image: DecorationImage(
@@ -143,11 +143,11 @@ class _HomePageState extends State<HomePage> {
                 )
               ],
             ),
-          )),
+          ),
     );
   }
 
-  Widget promoCard(image) {
+  Widget promoCard(image,tittle) {
     return AspectRatio(
       aspectRatio: 2.6 / 3,
       child: Container(
@@ -160,6 +160,13 @@ class _HomePageState extends State<HomePage> {
               image: AssetImage(image)),
         ),
         child: Container(
+          child: Align(
+            alignment: Alignment.bottomLeft,
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text(tittle,style: TextStyle(color: Colors.white,fontSize: 15),),
+            ),
+          ),
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20),
               gradient: LinearGradient(begin: Alignment.bottomRight, stops: [
@@ -169,6 +176,7 @@ class _HomePageState extends State<HomePage> {
                 Colors.black.withOpacity(.8),
                 Colors.black.withOpacity(0)
               ])),
+
         ),
       ),
     );
